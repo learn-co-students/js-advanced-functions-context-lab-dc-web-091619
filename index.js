@@ -47,7 +47,7 @@ function createEmployeeRecord(array) {
   
   function allWagesFor() {
     const allDates = this.timeInEvents.map(event => event.date)
-    return allDates.reduce((total, date) => total += wagesEarnedOnDate(this, date), 0).bind(this)
+    return allDates.reduce((total, date) => total += wagesEarnedOnDate.call(this, date), 0, this)
   }
   
   function findEmployeeByFirstName(employeeArray, firstname) {
