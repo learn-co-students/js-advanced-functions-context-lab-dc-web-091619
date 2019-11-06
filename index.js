@@ -45,10 +45,10 @@ function createEmployeeRecord(array) {
     return hoursWorkedOnDate.call(this, dateGiven) * this.payPerHour
   }
   
-//   function allWagesFor() {
-//     const allDates = this.timeInEvents.map(event => event.date)
-//     return allDates.reduce((total, date) => total += wagesEarnedOnDate(this, date), 0)
-//   }
+  function allWagesFor() {
+    const allDates = this.timeInEvents.map(event => event.date)
+    return allDates.reduce((total, date) => total += wagesEarnedOnDate(this, date), 0).bind(this)
+  }
   
   function findEmployeeByFirstName(employeeArray, firstname) {
     return employeeArray.find(employeeRecord => employeeRecord.firstName === firstname)
@@ -66,14 +66,14 @@ function createEmployeeRecord(array) {
  for you to use if you need it!
  */
 
-let allWagesFor = function () {
-    let eligibleDates = this.timeInEvents.map(function (e) {
-        return e.date
-    })
+// let allWagesFor = function () {
+//     let eligibleDates = this.timeInEvents.map(function (e) {
+//         return e.date
+//     })
 
-    let payable = eligibleDates.reduce(function (memo, d) {
-        return memo + wagesEarnedOnDate.call(this, d)
-    }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
+//     let payable = eligibleDates.reduce(function (memo, d) {
+//         return memo + wagesEarnedOnDate.call(this, d)
+//     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
 
-    return payable
-}
+//     return payable
+// }
